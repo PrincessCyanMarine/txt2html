@@ -24,7 +24,7 @@ console.log('Written output.md!');
 
 const https = require('https');
 var css = '';
-https.get("https://github.com/sindresorhus/github-markdown-css/blob/main/github-markdown.css", (res) => {
+https.get("https://raw.githubusercontent.com/sindresorhus/github-markdown-css/main/github-markdown.css", (res) => {
     res.on('data', (data) => { css += data });
     res.on('end', () => {
         octokit.request('POST /markdown', { text }).then(body => {
