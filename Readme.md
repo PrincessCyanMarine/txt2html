@@ -1,3 +1,4 @@
+# txt to markdown and html converter
 I wanted to convert a txt file to html so I made this
 
 # How to install/use
@@ -44,7 +45,7 @@ Paste your input txt file and rename it to input.txt
 run convert.bat
 
 
-# Possible thanks to
+# Thanks to
 https://github.com/sindresorhus/github-markdown-css
 
 https://docs.github.com/en/rest/reference/markdown
