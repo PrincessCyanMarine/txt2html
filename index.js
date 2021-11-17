@@ -24,8 +24,8 @@ console.log('Written output.md!');
 
 const https = require('https');
 var css = '';
-const request = https.get("https://github.com/sindresorhus/github-markdown-css/blob/main/github-markdown.css", (res) => {
-    res.on('data', (chunk) => { css += chunk });
+https.get("https://github.com/sindresorhus/github-markdown-css/blob/main/github-markdown.css", (res) => {
+    res.on('data', (data) => { css += data });
     res.on('end', () => {
         octokit.request('POST /markdown', { text }).then(body => {
             writeFileSync('./files/output.html', html_text(css, body.data));
@@ -34,9 +34,5 @@ const request = https.get("https://github.com/sindresorhus/github-markdown-css/b
             console.log('\nMade by CyanMarine :P');
             console.log('Check https://github.com/PrincessCyanMarine/txt2html for more info\n');
         });
-
     });
-})
-
-
-
+});
