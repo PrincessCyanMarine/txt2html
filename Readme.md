@@ -1,7 +1,7 @@
 I wanted to convert a txt file to html so I made this
 
 # How to install/use
-Clone this clone this repo
+Run the following on terminal
 ```console
 $ git clone https://github.com/PrincessCyanMarine/txt2html.git
 $ cd txt2html
