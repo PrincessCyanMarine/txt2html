@@ -1,6 +1,6 @@
 const { readFileSync, writeFileSync, existsSync } = require('fs');
 const error = () => {
-    console.error('Something is wrong, please check https://github.com/PrincessCyanMarine/txt2html to see how to isntall correctly\n');
+    console.error('Something is wrong, please check https://github.com/PrincessCyanMarine/txt2html#how-to-installuse to see how to isntall correctly\n');
     process.exit(1);
 }
 
