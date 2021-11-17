@@ -1,37 +1,33 @@
-const { readFileSync, writeFileSync } = require('fs');
+const { readFileSync, writeFileSync, existsSync } = require('fs');
+const error = () => {
+    console.error('Something is wrong, please check https://github.com/PrincessCyanMarine/txt2html to see how to isntall correctly\n');
+    process.exit(1);
+}
+
+['./config.js', './files/input.txt', './github-markdown.css'].forEach(a => { if (!existsSync(a)) error(); });
+
+
+const { html_text, formatter, github_auth } = require('./config');
+if (!(html_text && formatter && github_auth) || !(github_auth.trim()) || github_auth == '') error();
+console.log("Read config!");
+
+
 const { Octokit } = require("@octokit/core");
-const octokit = new Octokit({ auth: `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` });
-
-var answer = readFileSync('./files/prova.txt', 'utf-8');
-answer =
-    answer
-        .replace(/# ([\s\S]+?)[\r\n]/g, "\n```java\n$1\n```\n")
-        .replace(/```\n+```java/g, '')
-        .replace(/! ([\s\S]+?)[\r\n]/g, "\n```console\n$1\n```\n")
-        .replace(/```\n+```console/g, '')
-        .replace(/[0-9]{1,2} [a-e][\r\n]/g, "# $&")
-        .replace(/([0-9]{1,2}):\s{5,6}([a-e])\s+[0-9]+/g, "[$1 $2](#$1-$2)\n")
-        .replace(/gabarito\s+(explicação na linha)/i, "# Índice")
-// .replace(//g, "")
+const octokit = new Octokit({ auth: github_auth });
 
 
-writeFileSync('./files/prova.md', answer);
-octokit.request('POST /markdown', {
-    text: answer
-}).then(markdown => {
+
+const input = readFileSync('./files/input.txt', 'utf-8');
+console.log("Read input!");
+const text = formatter(input);
+
+writeFileSync('./files/output.md', text);
+console.log('Written output.md!');
+octokit.request('POST /markdown', { text }).then(body => {
     const css = readFileSync('./github-markdown.css', 'utf-8');
-    writeFileSync('./files/prova.html', `<!DOCTYPE html>
-    <html lang="pt-br">
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <html>
-        <head>
-            <style>${css}</style>
-            <title>Prova 1 de tecnicas - Rawan</title>
-        </head>
-        
-        <body class="markdown-body">
-            <div style="padding: 20px;">${markdown.data}</div>
-        </body>
-    </html>`);
+    writeFileSync('./files/output.html', html_text(css, body.data));
+    console.log('Written output.html!');
+
+    console.log('\nMade by CyanMarine :P');
+    console.log('Check https://github.com/PrincessCyanMarine/txt2html for more info\n');
 });
