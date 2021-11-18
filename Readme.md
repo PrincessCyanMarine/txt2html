@@ -23,8 +23,8 @@ module.exports = {
             <title></title>
         </head>
 
-        <body class="markdown-body">
-            <div style="padding: 20px;">${body}</div>
+        <body class="markdown-body" style="padding: 20px;">
+            <div>${body}</div>
         </body>
     </html>`,
 
