@@ -1,5 +1,5 @@
 # txt to markdown and html converter
-I wanted to convert a txt file to html so I made this
+I had a txt file I wanted to convert to html, but I didn't want to make it into markdown by hand, so I made this
 
 # How to install/use
 Run the following on terminal
@@ -45,7 +45,7 @@ Paste your input txt file and rename it to input.txt
 run convert.bat
 
 
-# Thanks to
+# Done by using
 https://github.com/sindresorhus/github-markdown-css
 
 https://docs.github.com/en/rest/reference/markdown

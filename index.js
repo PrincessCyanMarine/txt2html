@@ -1,4 +1,4 @@
-const { readFileSync, writeFileSync, existsSync, WriteStream } = require('fs');
+const { readFileSync, writeFileSync, existsSync } = require('fs');
 const error = (a) => {
     console.error(a + '\nPlease check https://github.com/PrincessCyanMarine/txt2html#how-to-installuse to see how to isntall correctly\n');
     process.exit(1);
@@ -27,8 +27,9 @@ var css = '';
 https.get("https://raw.githubusercontent.com/sindresorhus/github-markdown-css/main/github-markdown.css", (res) => {
     res.on('data', (data) => { css += data });
     res.on('end', () => {
-        octokit.request('POST /markdown', { text }).then(body => {
-            writeFileSync('./files/output.html', html_text(css, body.data));
+        octokit.request('POST /markdown', { text }).then(res => {
+            const body = res.data.replace(/<h1>([\s\S]+?<\/a>)([\s\S]+?)<\/h1>/g, (a, a1, a2) => `<h1 id=\"${a2.replace(/\s/g, '-')}\">${a1}${a2}</h1>`);
+            writeFileSync('./files/output.html', html_text(css, body));
             console.log('Written output.html!');
 
             console.log('\nMade by CyanMarine :P');
