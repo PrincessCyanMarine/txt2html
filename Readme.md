@@ -45,7 +45,7 @@ Paste your input txt file and rename it to input.txt
 run convert.bat
 
 
-# Done by using
+# Done using
 https://github.com/sindresorhus/github-markdown-css
 
 https://docs.github.com/en/rest/reference/markdown
