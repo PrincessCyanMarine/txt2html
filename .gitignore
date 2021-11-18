@@ -1,4 +1,7 @@
 node_modules
-files
-config.js
+# *.txt
+# *.html
+# *.md
+# *.zip
+# config.js
 package-lock.json
