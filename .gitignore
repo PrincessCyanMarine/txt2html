@@ -1,7 +1,7 @@
 node_modules
-# *.txt
-# *.html
-# *.md
-# *.zip
-# config.js
+*.txt
+*.html
+*.md
+*.zip
+config.js
 package-lock.json
