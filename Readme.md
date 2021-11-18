@@ -42,8 +42,7 @@ Create a folder called files
 
 Paste your input txt file and rename it to input.txt
 
-run convert.bat
-
+run convert.bat (or use ```node .```)
 
 # Done using
 https://github.com/sindresorhus/github-markdown-css
