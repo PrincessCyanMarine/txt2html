@@ -24,11 +24,18 @@ https.get(css_URL, (res) => {
     res.on('end', () => { convert(); });
 });
 async function convert(i) {
-    const next = (e) => { if (e < dir.length) convert(e + 1); };
+    console.log(``);
+    const next = () => {
+        if (i < (dir.length - 1)) convert(i + 1);
+        else {
+            console.log('\nMade by CyanMarine :P');
+            console.log('Check https://github.com/PrincessCyanMarine/txt2html for more info\n');
+        }
+    };
 
     if (!i) i = 0;
     let file = dir[i];
-    if (!file.endsWith('.txt')) { next(i); return; };
+    if (!file.endsWith('.txt')) { next(); return; };
     let file_name = file.split('.')[0];
     let input = readFileSync('./input/' + file, 'utf-8');
     console.log(`Read ${file}!`);
@@ -36,7 +43,7 @@ async function convert(i) {
 
     if (create_md) {
         writeFileSync('./output/' + file_name + '.md', text);
-        console.log('Written' + file_name + '.md!');
+        console.log('Written ' + file_name + '.md!');
     }
 
     let body = (await octokit.request('POST /markdown', { text }))
@@ -45,6 +52,5 @@ async function convert(i) {
     writeFileSync('./output/' + file_name + '.html', html_text(css, body));
     console.log('Written ' + file_name + '.html!');
 
-    console.log('\nMade by CyanMarine :P');
-    console.log('Check https://github.com/PrincessCyanMarine/txt2html for more info\n');
+    next();
 }
