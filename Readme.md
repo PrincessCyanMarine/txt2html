@@ -3,8 +3,11 @@ I had a txt file I wanted to convert to html, but I didn't want to make it into 
 
 # How to install/use
 Click code
+
 Click Download ZIP
+
 Extract ZIP
+
 Run ```npm i``` on the extracted folder
 
 
