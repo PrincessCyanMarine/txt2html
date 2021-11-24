@@ -2,12 +2,11 @@
 I had a txt file I wanted to convert to html, but I didn't want to make it into markdown by hand, so I made this
 
 # How to install/use
-Run the following on terminal
-```console
-$ git clone https://github.com/PrincessCyanMarine/txt2html.git
-$ cd txt2html
-$ npm i
-```
+Click code
+Click Download ZIP
+Extract ZIP
+Run ```npm i``` on the extracted folder
+
 
 Create a config.js file and paste
 ```javascript
