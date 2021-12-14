@@ -42,7 +42,7 @@ module.exports = {
 
 Customize formatter and html_text to your liking
 
-If you want a .md file to be created, changed create_md to true
+If you want a .md file to be created, change create_md to true
 
 Go to https://github.com/settings/tokens to create an auth code and paste it on config.js as well
 
