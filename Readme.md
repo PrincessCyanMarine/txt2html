@@ -33,8 +33,7 @@ module.exports = {
             <div>${body}</div>
         </body>
     </html>`,
-    formatter: (input) => (input + '\n')
-    ,
+    formatter: (input) => (input + '\n'),
     github_auth: '',
     create_md: false
 }
